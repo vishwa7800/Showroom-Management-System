@@ -1,0 +1,55 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing & Test Suites
+/coverage
+test_*.js
+
+# Next.js Build Output
+/.next/
+/out/
+
+# Production Builds
+/build
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env*.local
+.env.production
+*.pem
+*.key
+*.cert
+
+# Backend & Database Architecture (Protected from Git)
+/prisma/
+src/app/api/
+src/lib/db/
+src/lib/auth/server.ts
+src/lib/prisma.ts
+src/lib/audit.ts
+src/scripts/
+PHASE_*.md
+
+# SQLite & Local DB Testing
+*.db
+*.db-journal
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS & IDE Settings
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea/
+.vscode/
