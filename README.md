@@ -5,7 +5,7 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-5.22-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791?style=flat-square&logo=postgresql)](https://supabase.com/)
-[![License](https://img.shields.io/badge/License-Proprietary-red?style=flat-square)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](./LICENSE)
 
 An enterprise-grade, full-stack **Dealership Management System (ERP)** and **Customer Self-Service Portal** designed specifically for authorized **Hero MotoCorp** two-wheeler dealerships. Built with Next.js 14 App Router, TypeScript, Prisma ORM, and PostgreSQL (Supabase).
 
@@ -25,10 +25,6 @@ An enterprise-grade, full-stack **Dealership Management System (ERP)** and **Cus
   - [Prerequisites](#prerequisites)
   - [Installation & Setup](#installation--setup)
 - [Environment Variables (.env.local)](#-environment-variables-envlocal)
-- [Demo Credentials](#-demo-credentials)
-- [Testing & Quality Assurance](#-testing--quality-assurance)
-- [Production Deployment](#-production-deployment)
-- [License](#-license)
 
 ---
 
@@ -189,7 +185,6 @@ shreeji-hero-sms/
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18.17.0 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 - A [Supabase](https://supabase.com/) PostgreSQL database instance (or local PostgreSQL)
 
 ---
@@ -247,79 +242,7 @@ shreeji-hero-sms/
 
 ---
 
-## 👥 Demo Credentials
 
-The database comes pre-seeded with test accounts for all roles:
-
-### Dealership Staff (Sign in at `/login`):
-
-| Role | Email / Identifier | Password | Access Scope |
-| :--- | :--- | :--- | :--- |
-| **Admin (Owner)** | `rajesh@shreejihero.com` | `Admin@123` | All Branches & Settings |
-| **Showroom Manager** | `vikram@shreejihero.com` | `Manager@123` | Halvad Branch (HQ) |
-| **Sales Executive** | `amit@shreejihero.com` | `Sales@123` | Sales, Leads, Deliveries |
-| **Front Desk** | `pooja@shreejihero.com` | `FrontDesk@123` | Walk-ins & Inquiries |
-| **Service Manager** | `sandeep@shreejihero.com` | `Service@123` | Workshop & Technicians |
-| **Service Advisor** | `kiran@shreejihero.com` | `ServiceAdv@123` | Job Cards & QC |
-| **Accountant** | `neha@shreejihero.com` | `Accounts@123` | Billing, Payments, GST |
-| **Inventory Manager** | `mohit@shreejihero.com` | `Inventory@123` | Stock & Spare Parts |
-
-### Customer Portal (Sign in at `/portal/login`):
-
-| Customer Name | Registered Phone | Demo OTP |
-| :--- | :--- | :--- |
-| **Ramesh Patel** | `+91 98765 43210` | `123456` |
-| **Priya Shah** | `+91 98765 43211` | `123456` |
-
----
-
-## 🧪 Testing & Quality Assurance
-
-The codebase includes comprehensive automated test suites covering authentication persistence, RBAC enforcement, sales/service lifecycles, and database integrity:
-
-```bash
-# Run PostgreSQL runtime verification tests
-node test_phase23_postgres_runtime.js
-
-# Run security and RBAC authorization tests
-node test_security.js
-
-# Run customer isolation & IDOR defense tests
-node test_customer_security.js
-
-# Run end-to-end dealership integration test suite
-node test_end_to_end_integration.js
-
-# Run TypeScript type check
-npx tsc --noEmit
-```
-
-**Verification Status**: `287 / 287` Automated Tests Passing (100%).
-
----
-
-## 🚢 Production Deployment
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-### Deploying to Vercel
-
-1. Push your repository to GitHub.
-2. Import the repository into [Vercel](https://vercel.com).
-3. In **Project Settings ➔ Environment Variables**, add:
-   - `DATABASE_URL`
-   - `DIRECT_URL`
-   - `JWT_SECRET`
-   - `NODE_ENV=production`
-   - `APP_URL=https://your-domain.com`
-4. Click **Deploy**.
-
----
 
 ## 📄 License
 
