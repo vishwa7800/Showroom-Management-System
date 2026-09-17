@@ -1,4 +1,4 @@
-# 🏍️ Shreeji Hero Showroom Management System (SMS)
+# 🏍️Showroom Management System (SMS)
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.24-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -30,7 +30,7 @@ An enterprise-grade, full-stack **Dealership Management System (ERP)** and **Cus
 
 ## 🌟 Overview
 
-The **Shreeji Hero Showroom Management System** unifies all commercial, technical, and customer-facing operations across multiple authorized branches:
+The **Showroom Management System** unifies all commercial, technical, and customer-facing operations across multiple authorized branches:
 
 - **Halvad Main Branch (HQ)** — `SHR-HLV`
 - **Dhangadhra Branch** — `SHR-DHN`
