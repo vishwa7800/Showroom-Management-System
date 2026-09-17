@@ -227,23 +227,6 @@ shreeji-hero-sms/
 
 ---
 
-## ⚙️ Environment Variables (`.env.local`)
-
-| Variable | Description | Example |
-| :--- | :--- | :--- |
-| `NODE_ENV` | Application runtime environment | `development` / `production` |
-| `APP_URL` | Base application URL | `http://localhost:3000` |
-| `NEXT_PUBLIC_APP_NAME` | Public brand title | `Shreeji Hero Showroom ERP` |
-| `DATABASE_URL` | PostgreSQL pooler connection URL | `postgresql://postgres.[REF]:[PASS]@aws-0-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true` |
-| `DIRECT_URL` | PostgreSQL direct connection URL (migrations) | `postgresql://postgres.[REF]:[PASS]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres` |
-| `JWT_SECRET` | Cryptographic secret for signing JWT sessions (min 32 chars) | `your-high-entropy-random-secret-key-32-chars` |
-| `AUTH_SECRET` | Auth secret key | `your-auth-secret-key` |
-| `SESSION_COOKIE_NAME` | Name of the authentication cookie | `shreeji_hero_session` |
-
----
-
-
-
 ## 📄 License
 
 This project is proprietary and confidential. Developed for **Shreeji Hero MotoCorp Authorized Dealership**. All rights reserved.
