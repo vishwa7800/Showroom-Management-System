@@ -237,34 +237,6 @@ export function AdminDashboard({ activeBranchId, onQuickAction }: AdminDashboard
           </div>
         </CardContent>
       </Card>
-
-      {/* Critical Business Alerts */}
-      <Card className="border border-slate-200">
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle className="text-sm flex items-center gap-2">
-            <AlertTriangle className="h-4 w-4 text-amber-500" />
-            Executive Business Alerts & Notifications
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {data.alerts.map((alt) => (
-            <div
-              key={alt.id}
-              className={`p-3.5 rounded-lg border text-xs flex items-start gap-3 ${
-                alt.level === 'CRITICAL'
-                  ? 'bg-rose-50 border-rose-200 text-rose-800'
-                  : 'bg-amber-50 border-amber-200 text-amber-800'
-              }`}
-            >
-              <AlertTriangle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="font-bold">{alt.title}</p>
-                <p className="text-[11px] mt-0.5 leading-snug">{alt.message}</p>
-              </div>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
     </div>
   );
 }
