@@ -157,35 +157,15 @@ export default function EmployeesPage() {
       {/* Top Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-lg border border-slate-200">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-slate-900 tracking-tight">
-              Employee Management & Access Control
-            </h1>
-            <Badge variant="outline" className="text-xs font-semibold">
-              RBAC Protected
-            </Badge>
-          </div>
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight">
+            Employee Management & Access Control
+          </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Server-enforced role permissions, branch assignments, and account activation lifecycle.
+            Staff directory, branch assignments, and account activation management.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          {can('audit.read') && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                fetchAuditLogs();
-                setIsAuditModalOpen(true);
-              }}
-              className="gap-1.5 text-xs text-slate-700"
-            >
-              <History className="h-3.5 w-3.5" />
-              Security Audit Logs
-            </Button>
-          )}
-
           {can('employees.manage') && (
             <Button
               size="sm"
