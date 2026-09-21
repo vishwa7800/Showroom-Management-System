@@ -435,16 +435,7 @@ export default function SalesPage() {
       {activeTab === 'BOOKINGS' && (
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-white p-3 rounded-lg border border-slate-200">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by customer, booking code, VIN, phone..."
-                className="w-full h-8 pl-8 pr-3 text-xs bg-slate-50 border border-slate-200 rounded-md focus:bg-white focus:ring-1 focus:ring-hero"
-              />
-            </div>
+            <span className="text-xs font-semibold text-slate-700">Booking Status Filter:</span>
 
             <div className="flex items-center gap-1 overflow-x-auto text-xs">
               {(

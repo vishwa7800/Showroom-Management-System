@@ -176,23 +176,10 @@ export default function CustomersPage() {
         </div>
       </div>
 
-      {/* Global Customer Search & Stats Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-        <div className="md:col-span-2 relative">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by Name, Mobile Number, Customer Code (e.g. SHR-C1001), or City..."
-            className="w-full h-10 pl-9 pr-4 rounded-lg bg-white border border-slate-200 text-xs focus:ring-1 focus:ring-hero focus:border-hero transition-all"
-          />
-        </div>
-
-        <div className="flex items-center justify-between p-2.5 bg-white border border-slate-200 rounded-lg text-xs">
-          <span className="text-slate-500">Total Customers:</span>
-          <span className="font-bold text-slate-900">{customers.length} Profiles</span>
-        </div>
+      {/* Customer Directory Stats Bar */}
+      <div className="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-lg text-xs">
+        <span className="text-slate-600 font-medium">Customer CRM Directory</span>
+        <span className="font-bold text-slate-900 bg-slate-100 px-3 py-1 rounded-md">{customers.length} Profiles Registered</span>
       </div>
 
       {/* Customer Directory Table */}

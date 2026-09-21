@@ -172,18 +172,6 @@ export function TopHeader() {
           </div>
         </div>
 
-        {/* Center: Global Search */}
-        <div className="hidden md:flex items-center max-w-xs w-full mx-4">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search Customer, VIN, Job Card..."
-              className="w-full h-9 pl-9 pr-3 rounded-md bg-slate-50 border border-slate-200 text-xs focus:bg-white focus:outline-none focus:ring-1 focus:ring-hero focus:border-hero transition-colors"
-            />
-          </div>
-        </div>
-
         {/* Right Area: Actions & Profile */}
         <div className="flex items-center gap-3">
           {/* Dynamic Role-Aware "+ Create New" Quick Action Button */}
