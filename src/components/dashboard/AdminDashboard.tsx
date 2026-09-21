@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -17,6 +18,7 @@ import {
   DollarSign,
   Star,
   Users,
+  Plus,
   FileBarChart,
   ArrowUpRight,
 } from 'lucide-react';
@@ -48,23 +50,35 @@ export function AdminDashboard({ activeBranchId, onQuickAction }: AdminDashboard
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <Button
-            size="sm"
-            onClick={() => onQuickAction('SET_SALES_TARGET')}
-            variant="outline"
-            className="gap-1.5 text-xs text-slate-700 h-9"
-          >
-            <Target className="h-4 w-4 text-hero" />
-            Set Sales Quota
-          </Button>
-          <Button
-            size="sm"
-            onClick={() => onQuickAction('ADD_EMPLOYEE')}
-            className="gap-1.5 text-xs font-semibold h-9"
-          >
-            <Users className="h-4 w-4" />
-            Manage Staff
-          </Button>
+          <Link href="/reports">
+            <Button
+              size="sm"
+              variant="outline"
+              className="gap-1.5 text-xs text-slate-700 h-9 hover:bg-slate-50"
+            >
+              <Target className="h-4 w-4 text-hero" />
+              Set Sales Quota
+            </Button>
+          </Link>
+          <Link href="/employees">
+            <Button
+              size="sm"
+              variant="outline"
+              className="gap-1.5 text-xs font-semibold h-9 border-slate-300 text-slate-700 hover:bg-slate-50"
+            >
+              <Users className="h-4 w-4 text-slate-600" />
+              Manage Staff
+            </Button>
+          </Link>
+          <Link href="/employees/create">
+            <Button
+              size="sm"
+              className="gap-1.5 text-xs font-semibold h-9 bg-hero hover:bg-hero-700 text-white shadow-sm"
+            >
+              <Plus className="h-4 w-4" />
+              + Add Member
+            </Button>
+          </Link>
         </div>
       </div>
 

@@ -18,9 +18,11 @@ import {
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { QuickActionModal } from '@/components/dashboard/QuickActionModal';
 
 export function TopHeader() {
+  const router = useRouter();
   const { user, activeBranch, activeBranchId, switchBranch, logout } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showCreateMenu, setShowCreateMenu] = useState(false);
@@ -72,9 +74,13 @@ export function TopHeader() {
 
   const roleQuickActions = user ? (ROLE_QUICK_ACTIONS[user.role] || []) : [];
 
-  const handleSelectQuickAction = (actionKey: string) => {
+  const handleSelectQuickAction = (qa: any) => {
     setShowCreateMenu(false);
-    setActiveModalAction(actionKey);
+    if (qa.href) {
+      router.push(qa.href);
+    } else {
+      setActiveModalAction(qa.actionKey);
+    }
   };
 
   if (!user) {
@@ -98,23 +104,65 @@ export function TopHeader() {
               Shreeji Hero
             </span>
             <span className="text-slate-300 hidden sm:inline">|</span>
-          </div>
-
-          {/* Live Branch Context */}
-          <div className="flex items-center gap-2">
-            <Building2 className="h-4 w-4 text-hero" />
             {user.role === 'ADMIN' ? (
               <div className="relative">
-                <select
-                  value={activeBranchId || 'br_halvad'}
-                  onChange={(e) => switchBranch(e.target.value || null)}
-                  className="text-xs font-bold uppercase tracking-wider text-hero bg-hero-50 border border-hero-200 rounded-md px-2.5 py-1 pr-6 cursor-pointer focus:outline-none focus:ring-1 focus:ring-hero appearance-none"
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 transition-colors text-xs font-semibold text-slate-800"
                 >
-                  <option value="br_halvad">HALVAD BRANCH (HQ)</option>
-                  <option value="br_dhangadhra">DHANGADHRA BRANCH</option>
-                  <option value="br_jetpur">JETPUR BRANCH</option>
-                </select>
-                <ChevronDown className="h-3 w-3 text-hero absolute right-2 top-2 pointer-events-none" />
+                  <Building2 className="h-3.5 w-3.5 text-hero" />
+                  <span>{activeBranch ? activeBranch.name : 'All Dealership Branches'}</span>
+                  <ChevronDown className="h-3.5 w-3.5 text-slate-500" />
+                </button>
+
+                {showUserMenu && (
+                  <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-dropdown border border-slate-200 py-2 z-30 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="px-3 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                      Switch Active Dealership Branch
+                    </div>
+                    <button
+                      onClick={() => {
+                        switchBranch(null);
+                        setShowUserMenu(false);
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
+                    >
+                      <span className="font-medium">All Branches Consolidated</span>
+                      {!activeBranchId && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                    </button>
+                    <div className="my-1 border-t border-slate-100" />
+                    <button
+                      onClick={() => {
+                        switchBranch('SHR-HLV');
+                        setShowUserMenu(false);
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
+                    >
+                      <span>Halvad Branch (HQ)</span>
+                      {activeBranchId === 'SHR-HLV' && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                    </button>
+                    <button
+                      onClick={() => {
+                        switchBranch('SHR-DHN');
+                        setShowUserMenu(false);
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
+                    >
+                      <span>Dhrangadhra Branch</span>
+                      {activeBranchId === 'SHR-DHN' && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                    </button>
+                    <button
+                      onClick={() => {
+                        switchBranch('SHR-JTP');
+                        setShowUserMenu(false);
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
+                    >
+                      <span>Jetpur Branch</span>
+                      {activeBranchId === 'SHR-JTP' && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <Badge variant="hero" className="font-bold tracking-wider uppercase text-[11px] py-1 px-2.5">
@@ -165,7 +213,7 @@ export function TopHeader() {
                       return (
                         <button
                           key={qa.id}
-                          onClick={() => handleSelectQuickAction(qa.actionKey)}
+                          onClick={() => handleSelectQuickAction(qa)}
                           className="w-full flex items-start gap-2.5 px-3 py-2 rounded-md hover:bg-hero-50/60 transition-colors text-left group"
                         >
                           <Icon className="h-4 w-4 text-slate-400 group-hover:text-hero mt-0.5 flex-shrink-0" />

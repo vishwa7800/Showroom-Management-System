@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -46,23 +47,25 @@ export function ManagerDashboard({ branchId, onQuickAction }: ManagerDashboardPr
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <Button
-            size="sm"
-            onClick={() => onQuickAction('ASSIGN_LEAD')}
-            variant="outline"
-            className="gap-1.5 text-xs text-slate-700 h-9"
-          >
-            <UserCheck className="h-4 w-4 text-hero" />
-            Assign Lead to Exec
-          </Button>
-          <Button
-            size="sm"
-            onClick={() => onQuickAction('AUTHORIZE_DELIVERY')}
-            className="gap-1.5 text-xs font-semibold h-9"
-          >
-            <Bike className="h-4 w-4" />
-            Authorize Deliveries
-          </Button>
+          <Link href="/leads">
+            <Button
+              size="sm"
+              variant="outline"
+              className="gap-1.5 text-xs text-slate-700 h-9 hover:bg-slate-50"
+            >
+              <UserCheck className="h-4 w-4 text-hero" />
+              Assign Lead to Exec
+            </Button>
+          </Link>
+          <Link href="/sales">
+            <Button
+              size="sm"
+              className="gap-1.5 text-xs font-semibold h-9 bg-hero hover:bg-hero-700 text-white shadow-sm"
+            >
+              <Bike className="h-4 w-4" />
+              Authorize Deliveries
+            </Button>
+          </Link>
         </div>
       </div>
 

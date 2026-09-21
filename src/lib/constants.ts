@@ -214,49 +214,50 @@ export interface QuickActionItem {
   description: string;
   icon: any;
   actionKey: string;
+  href?: string;
 }
 
 export const ROLE_QUICK_ACTIONS: Record<Role, QuickActionItem[]> = {
   ADMIN: [
-    { id: 'qa_adm_emp', label: 'Add New Employee', description: 'Onboard authorized dealership staff', icon: Users, actionKey: 'ADD_EMPLOYEE' },
-    { id: 'qa_adm_tgt', label: 'Set Sales Target', description: 'Configure monthly branch sales quota', icon: Target, actionKey: 'SET_SALES_TARGET' },
-    { id: 'qa_adm_br', label: 'Create Showroom Branch', description: 'Initialize new dealership location', icon: Building2, actionKey: 'CREATE_BRANCH' },
+    { id: 'qa_adm_emp', label: 'Add New Employee', description: 'Onboard authorized dealership staff', icon: Users, actionKey: 'ADD_EMPLOYEE', href: '/employees/create' },
+    { id: 'qa_adm_tgt', label: 'Set Sales Target', description: 'Configure monthly branch sales quota', icon: Target, actionKey: 'SET_SALES_TARGET', href: '/reports' },
+    { id: 'qa_adm_br', label: 'Create Showroom Branch', description: 'Initialize new dealership location', icon: Building2, actionKey: 'CREATE_BRANCH', href: '/settings' },
   ],
   SHOWROOM_MANAGER: [
-    { id: 'qa_mgr_assign', label: 'Assign Lead to Exec', description: 'Route new lead to floor executive', icon: UserCheck, actionKey: 'ASSIGN_LEAD' },
-    { id: 'qa_mgr_bk', label: 'Review Booking', description: 'Verify token & vehicle allocation', icon: CheckCircle, actionKey: 'REVIEW_BOOKING' },
-    { id: 'qa_mgr_del', label: 'Authorize Delivery', description: 'Approve PDI and vehicle handover', icon: Bike, actionKey: 'AUTHORIZE_DELIVERY' },
+    { id: 'qa_mgr_assign', label: 'Assign Lead to Exec', description: 'Route new lead to floor executive', icon: UserCheck, actionKey: 'ASSIGN_LEAD', href: '/leads' },
+    { id: 'qa_mgr_bk', label: 'Review Booking', description: 'Verify token & vehicle allocation', icon: CheckCircle, actionKey: 'REVIEW_BOOKING', href: '/sales' },
+    { id: 'qa_mgr_del', label: 'Authorize Delivery', description: 'Approve PDI and vehicle handover', icon: Bike, actionKey: 'AUTHORIZE_DELIVERY', href: '/sales' },
   ],
   SALES_EXECUTIVE: [
-    { id: 'qa_sls_lead', label: 'Add New Lead', description: 'Record prospective bike customer', icon: UserCheck, actionKey: 'ADD_LEAD' },
-    { id: 'qa_sls_fu', label: 'Log Follow-Up Note', description: 'Schedule callback or meeting', icon: PhoneCall, actionKey: 'LOG_FOLLOW_UP' },
-    { id: 'qa_sls_tr', label: 'Schedule Test Ride', description: 'Reserve demo bike time slot', icon: Compass, actionKey: 'SCHEDULE_TEST_RIDE' },
-    { id: 'qa_sls_bk', label: 'Create Vehicle Booking', description: 'Record booking token amount', icon: Bike, actionKey: 'CREATE_BOOKING' },
+    { id: 'qa_sls_lead', label: 'Add New Lead', description: 'Record prospective bike customer', icon: UserCheck, actionKey: 'ADD_LEAD', href: '/leads' },
+    { id: 'qa_sls_fu', label: 'Log Follow-Up Note', description: 'Schedule callback or meeting', icon: PhoneCall, actionKey: 'LOG_FOLLOW_UP', href: '/leads' },
+    { id: 'qa_sls_tr', label: 'Schedule Test Ride', description: 'Reserve demo bike time slot', icon: Compass, actionKey: 'SCHEDULE_TEST_RIDE', href: '/test-rides' },
+    { id: 'qa_sls_bk', label: 'Create Vehicle Booking', description: 'Record booking token amount', icon: Bike, actionKey: 'CREATE_BOOKING', href: '/sales' },
   ],
   FRONT_DESK: [
-    { id: 'qa_fd_walkin', label: 'Register Walk-In Guest', description: 'Fast visitor entry & queue entry', icon: Users, actionKey: 'REGISTER_WALK_IN' },
-    { id: 'qa_fd_inq', label: 'Log New Inquiry', description: 'Record customer bike interest', icon: FileText, actionKey: 'LOG_INQUIRY' },
-    { id: 'qa_fd_app', label: 'Book Test Ride', description: 'Schedule immediate demo bike ride', icon: Compass, actionKey: 'BOOK_TEST_RIDE' },
+    { id: 'qa_fd_walkin', label: 'Register Walk-In Guest', description: 'Fast visitor entry & queue entry', icon: Users, actionKey: 'REGISTER_WALK_IN', href: '/leads' },
+    { id: 'qa_fd_inq', label: 'Log New Inquiry', description: 'Record customer bike interest', icon: FileText, actionKey: 'LOG_INQUIRY', href: '/leads' },
+    { id: 'qa_fd_app', label: 'Book Test Ride', description: 'Schedule immediate demo bike ride', icon: Compass, actionKey: 'BOOK_TEST_RIDE', href: '/test-rides' },
   ],
   SERVICE_MANAGER: [
-    { id: 'qa_sm_queue', label: 'Assign Service Bay', description: 'Allocate job card to technician', icon: Wrench, actionKey: 'ASSIGN_BAY' },
-    { id: 'qa_sm_delay', label: 'Review Delayed Jobs', description: 'Inspect bottleneck on workshop floor', icon: AlertTriangle, actionKey: 'REVIEW_DELAYS' },
-    { id: 'qa_sm_appr', label: 'Approve Major Estimate', description: 'Authorize extra repair estimate', icon: CheckCircle, actionKey: 'APPROVE_REPAIR' },
+    { id: 'qa_sm_queue', label: 'Assign Service Bay', description: 'Allocate job card to technician', icon: Wrench, actionKey: 'ASSIGN_BAY', href: '/service' },
+    { id: 'qa_sm_delay', label: 'Review Delayed Jobs', description: 'Inspect bottleneck on workshop floor', icon: AlertTriangle, actionKey: 'REVIEW_DELAYS', href: '/service' },
+    { id: 'qa_sm_appr', label: 'Approve Major Estimate', description: 'Authorize extra repair estimate', icon: CheckCircle, actionKey: 'APPROVE_REPAIR', href: '/service' },
   ],
   SERVICE_ADVISOR: [
-    { id: 'qa_sa_jc', label: 'Create Job Card', description: 'Initial inspection & customer complaints', icon: Wrench, actionKey: 'CREATE_JOB_CARD' },
-    { id: 'qa_sa_rcv', label: 'Receive / Check-in Vehicle', description: 'Record fuel, km, and body check', icon: Bike, actionKey: 'CHECK_IN_VEHICLE' },
-    { id: 'qa_sa_hnd', label: 'Prepare Delivery Handover', description: 'Final bill & gate pass generation', icon: CheckCircle, actionKey: 'PREPARE_DELIVERY' },
+    { id: 'qa_sa_jc', label: 'Create Job Card', description: 'Initial inspection & customer complaints', icon: Wrench, actionKey: 'CREATE_JOB_CARD', href: '/service' },
+    { id: 'qa_sa_rcv', label: 'Receive / Check-in Vehicle', description: 'Record fuel, km, and body check', icon: Bike, actionKey: 'CHECK_IN_VEHICLE', href: '/service' },
+    { id: 'qa_sa_hnd', label: 'Prepare Delivery Handover', description: 'Final bill & gate pass generation', icon: CheckCircle, actionKey: 'PREPARE_DELIVERY', href: '/service' },
   ],
   ACCOUNTANT: [
-    { id: 'qa_acc_inv', label: 'Create Tax Invoice', description: 'Generate GST sale or service bill', icon: FileText, actionKey: 'CREATE_INVOICE' },
-    { id: 'qa_acc_pay', label: 'Record Payment Receipt', description: 'Log Cash, UPI, Card or Financer payment', icon: CreditCard, actionKey: 'RECORD_PAYMENT' },
-    { id: 'qa_acc_rec', label: 'Bank & Loan Reconcile', description: 'Match financier disbursement', icon: CheckCircle, actionKey: 'RECONCILE_PAYMENTS' },
+    { id: 'qa_acc_inv', label: 'Create Tax Invoice', description: 'Generate GST sale or service bill', icon: FileText, actionKey: 'CREATE_INVOICE', href: '/finance' },
+    { id: 'qa_acc_pay', label: 'Record Payment Receipt', description: 'Log Cash, UPI, Card or Financer payment', icon: CreditCard, actionKey: 'RECORD_PAYMENT', href: '/finance' },
+    { id: 'qa_acc_rec', label: 'Bank & Loan Reconcile', description: 'Match financier disbursement', icon: CheckCircle, actionKey: 'RECONCILE_PAYMENTS', href: '/finance' },
   ],
   INVENTORY_MANAGER: [
-    { id: 'qa_inv_in', label: 'Add Stock Inward', description: 'Receive factory batch or parts order', icon: Package, actionKey: 'ADD_STOCK_INWARD' },
-    { id: 'qa_inv_trf', label: 'Transfer Stock to Branch', description: 'Inter-branch vehicle or spares transfer', icon: ArrowRightLeft, actionKey: 'TRANSFER_STOCK' },
-    { id: 'qa_inv_vnd', label: 'Register Parts Vendor', description: 'Add authorized Hero parts supplier', icon: Users, actionKey: 'ADD_VENDOR' },
+    { id: 'qa_inv_in', label: 'Add Stock Inward', description: 'Receive factory batch or parts order', icon: Package, actionKey: 'ADD_STOCK_INWARD', href: '/inventory' },
+    { id: 'qa_inv_trf', label: 'Transfer Stock to Branch', description: 'Inter-branch vehicle or spares transfer', icon: ArrowRightLeft, actionKey: 'TRANSFER_STOCK', href: '/inventory' },
+    { id: 'qa_inv_vnd', label: 'Register Parts Vendor', description: 'Add authorized Hero parts supplier', icon: Users, actionKey: 'ADD_VENDOR', href: '/inventory' },
   ],
 };
 
