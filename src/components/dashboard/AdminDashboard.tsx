@@ -76,7 +76,7 @@ export function AdminDashboard({ activeBranchId, onQuickAction }: AdminDashboard
               className="gap-1.5 text-xs font-semibold h-9 bg-hero hover:bg-hero-700 text-white shadow-sm"
             >
               <Plus className="h-4 w-4" />
-              + Add Member
+              Add Member
             </Button>
           </Link>
         </div>

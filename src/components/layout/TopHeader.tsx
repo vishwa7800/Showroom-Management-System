@@ -183,7 +183,7 @@ export function TopHeader() {
                 className="gap-1.5 shadow-xs font-semibold text-xs h-8 bg-hero hover:bg-hero-700 text-white"
               >
                 <Plus className="h-3.5 w-3.5" />
-                <span>+ Create New</span>
+                <span>Create New</span>
               </Button>
 
               {/* Quick Actions Menu */}

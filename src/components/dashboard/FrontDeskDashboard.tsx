@@ -51,7 +51,7 @@ export function FrontDeskDashboard({ onQuickAction }: FrontDeskDashboardProps) {
             className="gap-2 text-sm font-bold shadow-md shadow-hero/20 h-11 px-5"
           >
             <UserPlus className="h-5 w-5" />
-            <span>+ Register Walk-In Guest</span>
+            <span>Register Walk-In Guest</span>
           </Button>
 
           <Button

@@ -362,7 +362,7 @@ export default function SalesPage() {
               className="gap-1.5 text-xs font-semibold h-9 shadow-sm"
             >
               <Plus className="h-4 w-4" />
-              <span>+ Generate Quotation</span>
+              <span>Generate Quotation</span>
             </Button>
           )}
         </div>

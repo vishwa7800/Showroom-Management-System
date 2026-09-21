@@ -170,7 +170,7 @@ export default function CustomersPage() {
               className="gap-1.5 text-xs font-semibold h-9 shadow-sm"
             >
               <Plus className="h-4 w-4" />
-              <span>+ Add New Customer</span>
+              <span>Add New Customer</span>
             </Button>
           )}
         </div>
