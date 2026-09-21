@@ -8,12 +8,12 @@
 /coverage
 test_*.js
 
-# Next.js Build Output
+# Next.js Build Output & Caches
 /.next/
 /out/
-
-# Production Builds
 /build
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # Environment Variables & Secrets
 .env
@@ -23,20 +23,6 @@ test_*.js
 *.pem
 *.key
 *.cert
-
-# Backend & Database Architecture (Protected from Git)
-/prisma/
-src/app/api/
-src/lib/db/
-src/lib/auth/server.ts
-src/lib/prisma.ts
-src/lib/audit.ts
-src/scripts/
-# Internal Architecture & Audit Documentation (Only README.md is public)
-*.md
-!README.md
-*.docx
-Shreeji_Hero_ERP_*.html
 
 # SQLite & Local DB Testing
 *.db
