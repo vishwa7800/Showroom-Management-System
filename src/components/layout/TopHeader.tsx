@@ -1,19 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '@/lib/auth/context';
 import { ROLE_QUICK_ACTIONS } from '@/lib/constants';
 import {
-  Bell,
-  Search,
   Plus,
   Building2,
   ChevronDown,
   LogOut,
   Sparkles,
   CheckCheck,
-  ArrowRight,
-  Shield,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -24,53 +20,9 @@ import { QuickActionModal } from '@/components/dashboard/QuickActionModal';
 export function TopHeader() {
   const router = useRouter();
   const { user, activeBranch, activeBranchId, switchBranch, logout } = useAuth();
-  const [showNotifications, setShowNotifications] = useState(false);
   const [showCreateMenu, setShowCreateMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [activeModalAction, setActiveModalAction] = useState<string | null>(null);
-
-  // Live Notifications State
-  const [notifications, setNotifications] = useState<any[]>([]);
-  const [unreadCount, setUnreadCount] = useState(0);
-
-  const fetchLiveNotifications = async () => {
-    try {
-      const res = await fetch('/api/notifications');
-      const data = await res.json();
-      if (data.success) {
-        setNotifications(data.notifications || []);
-        setUnreadCount(data.unreadCount || 0);
-      }
-    } catch (e) {
-      // fallback silently
-    }
-  };
-
-  useEffect(() => {
-    if (user) {
-      fetchLiveNotifications();
-      const interval = setInterval(fetchLiveNotifications, 30000); // 30s polling
-      return () => clearInterval(interval);
-    }
-  }, [activeBranchId, user]);
-
-  const handleMarkAllRead = async () => {
-    try {
-      await fetch('/api/notifications/read-all', { method: 'POST' });
-      fetchLiveNotifications();
-    } catch (e) {
-      // fallback
-    }
-  };
-
-  const handleMarkSingleRead = async (id: string) => {
-    try {
-      await fetch(`/api/notifications/${id}/read`, { method: 'PATCH' });
-      fetchLiveNotifications();
-    } catch (e) {
-      // fallback
-    }
-  };
 
   const roleQuickActions = user ? (ROLE_QUICK_ACTIONS[user.role] || []) : [];
 
@@ -221,88 +173,6 @@ export function TopHeader() {
               )}
             </div>
           )}
-
-          {/* Dynamic Role-Aware Notifications Bell */}
-          <div className="relative">
-            <button
-              onClick={() => setShowNotifications(!showNotifications)}
-              className="relative p-2 rounded-md text-slate-600 hover:bg-slate-100 transition-colors"
-            >
-              <Bell className="h-4 w-4" />
-              {unreadCount > 0 && (
-                <span className="absolute top-1 right-1 h-4 w-4 rounded-full bg-hero text-white text-[9px] font-bold flex items-center justify-center animate-pulse">
-                  {unreadCount}
-                </span>
-              )}
-            </button>
-
-            {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-dropdown border border-slate-200 overflow-hidden z-30 animate-in fade-in zoom-in-95 duration-150">
-                <div className="p-3 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-                  <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                    {user.role.replace(/_/g, ' ')} Alerts ({unreadCount})
-                  </span>
-                  <button
-                    onClick={handleMarkAllRead}
-                    className="text-[10px] text-hero font-semibold flex items-center gap-1 hover:underline"
-                  >
-                    <CheckCheck className="h-3 w-3" />
-                    <span>Mark all read</span>
-                  </button>
-                </div>
-                <div className="max-h-72 overflow-y-auto divide-y divide-slate-100">
-                  {notifications.length === 0 ? (
-                    <div className="p-4 text-center text-xs text-slate-400">
-                      No active notifications.
-                    </div>
-                  ) : (
-                    notifications.map((n) => (
-                      <Link
-                        key={n.id}
-                        href={n.linkUrl || '/notifications'}
-                        onClick={() => {
-                          handleMarkSingleRead(n.id);
-                          setShowNotifications(false);
-                        }}
-                        className={`p-3 block hover:bg-slate-50 transition-colors ${
-                          !n.isRead ? 'bg-hero-50/20 border-l-2 border-l-hero' : ''
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <p className="text-xs font-bold text-slate-900 truncate">{n.title}</p>
-                          <Badge
-                            variant={
-                              n.priority === 'CRITICAL'
-                                ? 'danger'
-                                : n.priority === 'IMPORTANT'
-                                ? 'warning'
-                                : 'outline'
-                            }
-                            className="text-[9px] px-1 py-0 uppercase"
-                          >
-                            {n.priority}
-                          </Badge>
-                        </div>
-                        <p className="text-[11px] text-slate-600 mt-0.5 leading-snug">
-                          {n.message}
-                        </p>
-                      </Link>
-                    ))
-                  )}
-                </div>
-                <div className="p-2 border-t border-slate-100 bg-slate-50 text-center">
-                  <Link
-                    href="/notifications"
-                    onClick={() => setShowNotifications(false)}
-                    className="text-xs font-bold text-hero hover:underline flex items-center justify-center gap-1"
-                  >
-                    <span>View All Notifications & Reminders</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
 
           {/* User Profile & Sign Out Dropdown */}
           <div className="relative">

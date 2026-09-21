@@ -57,7 +57,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Inventory', href: '/inventory', icon: Package },
         { title: 'Account & Billing', href: '/finance', icon: CreditCard },
         { title: 'Reports & Analytics', href: '/reports', icon: BarChart3 },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
         { title: 'Branch / Settings', href: '/settings', icon: Settings },
       ];
 
@@ -70,7 +69,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Inventory', href: '/inventory', icon: Package },
         { title: 'Account & Billing', href: '/finance', icon: CreditCard },
         { title: 'Reports', href: '/reports', icon: BarChart3 },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
         { title: 'Employees Directory', href: '/employees', icon: Users },
       ];
 
@@ -81,7 +79,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Leads & Follow-ups', href: '/leads', icon: UserCheck },
         { title: 'Test Rides', href: '/test-rides', icon: Compass },
         { title: 'Sales & Bookings', href: '/sales', icon: ShoppingCart },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
 
     case 'FRONT_DESK':
@@ -91,7 +88,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Walk-ins & Leads', href: '/leads', icon: UserCheck },
         { title: 'Appointments', href: '/service', icon: CalendarDays },
         { title: 'Test Rides', href: '/test-rides', icon: Compass },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
 
     case 'SERVICE_MANAGER':
@@ -101,7 +97,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Job Cards', href: '/service', icon: ClipboardList },
         { title: 'Service Reports', href: '/reports', icon: BarChart3 },
         { title: 'Spare Parts Stock', href: '/inventory', icon: Package },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
 
     case 'SERVICE_ADVISOR':
@@ -111,7 +106,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Vehicle Check-in', href: '/service', icon: Wrench },
         { title: 'Job Cards', href: '/service', icon: ClipboardList },
         { title: 'Customer History', href: '/customers', icon: Users },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
 
     case 'ACCOUNTANT':
@@ -119,7 +113,6 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
         { title: 'Invoices & Billing', href: '/finance', icon: CreditCard },
         { title: 'Financial Reports', href: '/reports', icon: BarChart3 },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
 
     case 'INVENTORY_MANAGER':
@@ -127,13 +120,11 @@ function getRoleNavLinks(role: Role): SidebarLink[] {
         { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
         { title: 'Vehicle & Spares Stock', href: '/inventory', icon: Package },
         { title: 'Stock Movements', href: '/inventory', icon: Package },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
 
     default:
       return [
         { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-        { title: 'Notifications', href: '/notifications', icon: Bell },
       ];
   }
 }
