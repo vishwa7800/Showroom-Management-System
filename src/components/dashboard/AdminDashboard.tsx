@@ -177,7 +177,7 @@ export function AdminDashboard({ activeBranchId, onQuickAction }: AdminDashboard
             </p>
           </div>
           <Badge variant="outline" className="text-[10px] font-mono">
-            3 Active Branches
+            {data.branches.length === 1 ? '1 Selected Branch' : '3 Active Branches'}
           </Badge>
         </CardHeader>
         <CardContent className="p-0">

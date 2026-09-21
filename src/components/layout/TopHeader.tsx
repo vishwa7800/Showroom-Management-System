@@ -139,7 +139,7 @@ export function TopHeader() {
                       className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
                     >
                       <span>Halvad Branch (HQ)</span>
-                      {activeBranchId === 'SHR-HLV' && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                      {(activeBranchId === 'SHR-HLV' || activeBranchId === 'br_halvad') && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
                     </button>
                     <button
                       onClick={() => {
@@ -149,7 +149,7 @@ export function TopHeader() {
                       className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
                     >
                       <span>Dhrangadhra Branch</span>
-                      {activeBranchId === 'SHR-DHN' && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                      {(activeBranchId === 'SHR-DHN' || activeBranchId === 'br_dhangadhra') && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
                     </button>
                     <button
                       onClick={() => {
@@ -159,7 +159,7 @@ export function TopHeader() {
                       className="w-full flex items-center justify-between px-3 py-2 text-xs text-slate-700 hover:bg-hero-50/60 hover:text-hero transition-colors"
                     >
                       <span>Jetpur Branch</span>
-                      {activeBranchId === 'SHR-JTP' && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
+                      {(activeBranchId === 'SHR-JTP' || activeBranchId === 'br_jetpur') && <CheckCheck className="h-3.5 w-3.5 text-hero" />}
                     </button>
                   </div>
                 )}

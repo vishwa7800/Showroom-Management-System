@@ -72,7 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const activeBranch = BRANCHES.find((b) => b.id === activeBranchId) || null;
+  const activeBranch = BRANCHES.find((b) => b.id === activeBranchId || b.code === activeBranchId) || null;
 
   const can = (permission: PermissionKey): boolean => {
     if (!currentUser) return false;
